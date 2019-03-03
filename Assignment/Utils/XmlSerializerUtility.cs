@@ -1,4 +1,9 @@
-﻿using System;
+﻿///<summary>
+/// Namn:       Magnus Wikhög
+/// Projekt:    _projekt_namn__
+/// Inlämnad:   _inlämnad_datum_
+///</summary>
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
