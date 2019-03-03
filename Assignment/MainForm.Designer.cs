@@ -82,11 +82,11 @@
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileNew = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileOpenText = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileOpenXML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileOpenBinary = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileSave = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileSaveAsText = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileSaveAsXML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileSaveAsBinary = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuFileXML = new System.Windows.Forms.ToolStripMenuItem();
@@ -682,22 +682,23 @@
             // mnuFileOpen
             // 
             this.mnuFileOpen.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFileOpenText,
+            this.mnuFileOpenXML,
             this.mnuFileOpenBinary});
             this.mnuFileOpen.Name = "mnuFileOpen";
             this.mnuFileOpen.Size = new System.Drawing.Size(180, 22);
             this.mnuFileOpen.Text = "Open...";
             // 
-            // mnuFileOpenText
+            // mnuFileOpenXML
             // 
-            this.mnuFileOpenText.Name = "mnuFileOpenText";
-            this.mnuFileOpenText.Size = new System.Drawing.Size(128, 22);
-            this.mnuFileOpenText.Text = "Text File";
+            this.mnuFileOpenXML.Name = "mnuFileOpenXML";
+            this.mnuFileOpenXML.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileOpenXML.Text = "XML File";
+            this.mnuFileOpenXML.Click += new System.EventHandler(this.mnuFileOpenXML_Click);
             // 
             // mnuFileOpenBinary
             // 
             this.mnuFileOpenBinary.Name = "mnuFileOpenBinary";
-            this.mnuFileOpenBinary.Size = new System.Drawing.Size(128, 22);
+            this.mnuFileOpenBinary.Size = new System.Drawing.Size(180, 22);
             this.mnuFileOpenBinary.Text = "Binary File";
             this.mnuFileOpenBinary.Click += new System.EventHandler(this.mnuFileOpenBinary_Click);
             // 
@@ -707,26 +708,28 @@
             this.mnuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.mnuFileSave.Size = new System.Drawing.Size(180, 22);
             this.mnuFileSave.Text = "Save";
+            this.mnuFileSave.Click += new System.EventHandler(this.mnuFileSave_Click);
             // 
             // mnuFileSaveAs
             // 
             this.mnuFileSaveAs.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFileSaveAsText,
+            this.mnuFileSaveAsXML,
             this.mnuFileSaveAsBinary});
             this.mnuFileSaveAs.Name = "mnuFileSaveAs";
             this.mnuFileSaveAs.Size = new System.Drawing.Size(180, 22);
             this.mnuFileSaveAs.Text = "Save as....";
             // 
-            // mnuFileSaveAsText
+            // mnuFileSaveAsXML
             // 
-            this.mnuFileSaveAsText.Name = "mnuFileSaveAsText";
-            this.mnuFileSaveAsText.Size = new System.Drawing.Size(128, 22);
-            this.mnuFileSaveAsText.Text = "Text File";
+            this.mnuFileSaveAsXML.Name = "mnuFileSaveAsXML";
+            this.mnuFileSaveAsXML.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileSaveAsXML.Text = "XML File";
+            this.mnuFileSaveAsXML.Click += new System.EventHandler(this.mnuFileSaveAsXML_Click);
             // 
             // mnuFileSaveAsBinary
             // 
             this.mnuFileSaveAsBinary.Name = "mnuFileSaveAsBinary";
-            this.mnuFileSaveAsBinary.Size = new System.Drawing.Size(128, 22);
+            this.mnuFileSaveAsBinary.Size = new System.Drawing.Size(180, 22);
             this.mnuFileSaveAsBinary.Text = "Binary File";
             this.mnuFileSaveAsBinary.Click += new System.EventHandler(this.mnuFileSaveAsBinary_Click);
             // 
@@ -882,9 +885,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuFileXML;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem mnuFileExit;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileOpenText;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileOpenXML;
         private System.Windows.Forms.ToolStripMenuItem mnuFileOpenBinary;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileSaveAsText;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileSaveAsXML;
         private System.Windows.Forms.ToolStripMenuItem mnuFileSaveAsBinary;
         private System.Windows.Forms.ToolStripMenuItem mnuFileXmlImport;
         private System.Windows.Forms.ToolStripMenuItem mnuFileXmlExport;

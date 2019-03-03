@@ -20,11 +20,35 @@ namespace Assignment
     /// The main form for this application.
     /// </summary>
     public partial class MainForm : Form{
+        private static string windowTitle = "The Animal Farm";
+
         private AnimalManager mAnimalManager;
         private RecipeManager mRecipeManager;
         private StaffManager mStaffManager;
         private Dictionary<string, CategoryConfiguration> mCategoriesConfigurations;
         private Dictionary<string, SpeciesConfiguration> mSpeciesConfigurations;
+
+        private string mSaveFilename = null;
+        private bool SaveAsBinary = true;
+        private bool mIsModified = false;
+
+        private string SaveFilename {
+            get => mSaveFilename;
+            set {
+                mSaveFilename = value;
+                UpdateWindowTitle();
+            }
+        }
+
+        private bool IsModified {
+            get => mIsModified;
+            set {
+                mIsModified = value;
+                UpdateWindowTitle();
+            }
+        }
+
+
 
         /// <summary>
         /// This constructor creates and initilaizes the necessary data structures for the main form
@@ -69,6 +93,14 @@ namespace Assignment
             DisplayAnimals();
             DisplayRecipes();
             DisplayStaff();
+
+            IsModified = false;
+            SaveFilename = null;
+        }
+
+
+        void UpdateWindowTitle() {
+            Text = windowTitle + " - " + (SaveFilename == null ? "(Untitled)" : SaveFilename) + (mIsModified ? "*" : "");
         }
 
 
@@ -147,6 +179,8 @@ namespace Assignment
 
             // Add the animal to the list
             animalsListView.Items.Add(new ListViewItem( new string[]{ animal.ID, animal.GetSpecies(), animal.Name, animal.age.ToString(), animal.Gender, animal.GetSpecialCharacteristics() } ));
+
+            IsModified = true;
         }
 
 
@@ -214,6 +248,7 @@ namespace Assignment
                 eaterTypeTextBox.Text = "";
                 feedingScheduleTextBox.Text = "";
                 DisplayAnimals();
+                IsModified = true;
             }
         }
 
@@ -271,6 +306,15 @@ namespace Assignment
         /// The user selected File -> New, so we reset the application.
         /// </summary>
         private void mnuFileNew_Click(object sender, EventArgs e) {
+            if (IsModified) {
+                DialogResult result = MessageBox.Show("Do you want to save your changes to " + (SaveFilename == null ? "Untitled" : SaveFilename) + "?", "Save changes?", MessageBoxButtons.YesNoCancel);
+
+                if ( result == DialogResult.Yes )
+                    mnuFileSave.PerformClick();
+                else if (result == DialogResult.Cancel)
+                    return;
+            }
+            
             Initialize();
         }
 
@@ -278,7 +322,8 @@ namespace Assignment
         }
 
         /// <summary>
-        /// The user selected File -> Save as -> Binary, so we display a save dialog and save the file.
+        /// Let's the user pick a filename and then saves the animal list to that file by
+        /// simulating a click on File -> Save.
         /// </summary>
         private void mnuFileSaveAsBinary_Click(object sender, EventArgs e) {
             SaveFileDialog saveDlg = new SaveFileDialog();
@@ -287,12 +332,9 @@ namespace Assignment
             saveDlg.ShowDialog();
 
             if (saveDlg.FileName != "") {
-                try {
-                    mAnimalManager.BinarySerialize(saveDlg.FileName);
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.ToString(), "Error when saving file");
-                }           
+                SaveFilename = saveDlg.FileName;
+                SaveAsBinary = true;
+                mnuFileSave.PerformClick(); // Simulate a click on Save
             }
         }
 
@@ -309,12 +351,16 @@ namespace Assignment
                 try {
                     mAnimalManager.BinaryDeSerialize(openDlg.FileName);
                     DisplayAnimals();
+                    IsModified = false;
+                    SaveFilename = openDlg.FileName;
+                    SaveAsBinary = true;
                 }
-                catch( Exception ex) {
+                catch ( Exception ex) {
                     MessageBox.Show(ex.ToString(), "Error when opening file");
                 }
             }
         }
+
 
         /// <summary>
         /// The user selected File -> XML -> Export, so we display a save dialog and save the file.
@@ -356,9 +402,84 @@ namespace Assignment
         /// The user selected File -> exit, so we exit the application.
         /// </summary>
         private void mnuFileExit_Click(object sender, EventArgs e) {
+            if (IsModified) {
+                DialogResult result = MessageBox.Show("Do you want to save your changes to " + (SaveFilename == null ? "Untitled" : SaveFilename) + " before exiting?", "Save changes?", MessageBoxButtons.YesNoCancel);
+
+                if (result == DialogResult.Yes)
+                    mnuFileSave.PerformClick();
+                else if (result == DialogResult.Cancel)
+                    return;
+            }
+
             Close();
         }
 
+
+        /// <summary>
+        /// Either saves the animal list to the current filename, or if there is no 
+        /// current filename, a "click" on Save As is triggered so the user can select a filename. 
+        /// </summary>
+        private void mnuFileSave_Click(object sender, EventArgs e) {
+            if (SaveFilename == null) {
+                if( SaveAsBinary )
+                    mnuFileSaveAsBinary.PerformClick(); // Simulate a click on Save as... -> Binary
+                else
+                    mnuFileSaveAsXML.PerformClick(); // Simulate a click on Save as... -> Text
+            }
+            else {
+                try {
+                    if (SaveAsBinary)
+                        mAnimalManager.BinarySerialize(SaveFilename);
+                    else
+                        mAnimalManager.XMLSerialize(SaveFilename);
+
+                    IsModified = false;
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.ToString(), "Error when saving file");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The user selected File -> Open -> XML File, so we display an open dialog and open the file.
+        /// </summary>
+        private void mnuFileOpenXML_Click(object sender, EventArgs e) {
+            OpenFileDialog openDlg = new OpenFileDialog();
+            openDlg.Filter = "XML file|*.xml";
+            openDlg.Title = "Open XML file";
+            openDlg.ShowDialog();
+
+            if (openDlg.FileName != "") {
+                try {
+                    mAnimalManager.XMLDeSerialize(openDlg.FileName);
+                    DisplayAnimals();
+                    IsModified = false;
+                    SaveFilename = openDlg.FileName;
+                    SaveAsBinary = false;
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.ToString(), "Error when opening file");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Let's the user pick a filename and then saves the animal list to that file by
+        /// simulating a click on File -> Save.
+        /// </summary>
+        private void mnuFileSaveAsXML_Click(object sender, EventArgs e) {
+            SaveFileDialog saveDlg = new SaveFileDialog();
+            saveDlg.Filter = "XML file|*.xml";
+            saveDlg.Title = "Save as XML file";
+            saveDlg.ShowDialog();
+
+            if (saveDlg.FileName != "") {
+                SaveFilename = saveDlg.FileName;
+                SaveAsBinary = false;
+                mnuFileSave.PerformClick(); // Simulate a click on Save
+            }
+        }
     }
 
 
