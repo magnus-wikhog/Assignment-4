@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Serialization;
 ///<summary>
 /// Namn:       Magnus Wikhög
 /// Projekt:    _projekt_namn__
@@ -11,6 +12,10 @@ namespace Assignment.Animals
     /// This is the abstract base class for all animal species, and contains common
     /// properties for all species.
     /// </summary>
+    [XmlInclude(typeof(Cat))]
+    [XmlInclude(typeof(Dog))]
+    [XmlInclude(typeof(Crow))]
+    [XmlInclude(typeof(Swan))]
     [Serializable]
     public abstract class Animal : IAnimal{
 

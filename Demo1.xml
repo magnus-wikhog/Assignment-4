@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAnimal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Animal xsi:type="Cat">
+    <age>3</age>
+    <ID>Cat-000</ID>
+    <Name>Kalle katt</Name>
+    <Gender>Male</Gender>
+    <teethCount>20</teethCount>
+    <clawLengthCm>3</clawLengthCm>
+  </Animal>
+  <Animal xsi:type="Dog">
+    <age>9</age>
+    <ID>Dog-001</ID>
+    <Name>Dora Dog</Name>
+    <Gender>Female</Gender>
+    <teethCount>15</teethCount>
+    <tailLengthCm>45</tailLengthCm>
+  </Animal>
+  <Animal xsi:type="Swan">
+    <age>15</age>
+    <ID>Swan-002</ID>
+    <Name>Steve the swan</Name>
+    <Gender>Male</Gender>
+    <wingSpanCm>211</wingSpanCm>
+    <color>black</color>
+  </Animal>
+  <Animal xsi:type="Crow">
+    <age>15</age>
+    <ID>Crow-003</ID>
+    <Name>Kim the Crow</Name>
+    <Gender>Other</Gender>
+    <wingSpanCm>50</wingSpanCm>
+    <weightKg>5</weightKg>
+  </Animal>
+</ArrayOfAnimal>

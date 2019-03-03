@@ -17,6 +17,13 @@ namespace Assignment.Animals
         public string color;
 
         /// <summary>
+        /// Needed for XML serialization.
+        /// </summary>
+        private Swan() : base(0) {
+        }
+
+
+        /// <summary>
         /// A constructor. Use it to construct a swan.
         /// </summary>
         /// <param name="wingSpanCm"></param>

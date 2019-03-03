@@ -15,6 +15,14 @@ namespace Assignment.Animals
     public class Dog : Mammal{
         public double tailLengthCm;
 
+
+        /// <summary>
+        /// Needed for XML serialization.
+        /// </summary>
+        private Dog() : base(0) {
+        }
+
+
         /// <summary>
         /// This is a constructor. It can be used to construct an instance of a class.
         /// This particular constructor constructs a Dog.

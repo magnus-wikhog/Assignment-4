@@ -15,6 +15,13 @@ namespace Assignment.Animals
     public class Cat : Mammal {
         public double clawLengthCm;
 
+
+        /// <summary>
+        /// Needed for XML serialization.
+        /// </summary>
+        private Cat() : base(0) {
+        }
+
         /// <summary>
         /// A constructor. It constructs cats.
         /// </summary>

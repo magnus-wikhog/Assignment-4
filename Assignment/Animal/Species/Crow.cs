@@ -15,6 +15,14 @@ namespace Assignment.Animals
     public class Crow : Bird{
         public double weightKg;
 
+
+        /// <summary>
+        /// Needed for XML serialization.
+        /// </summary>
+        private Crow() : base(0) {
+        }
+
+
         /// <summary>
         /// A constructor. It constructs a Crow.
         /// </summary>
