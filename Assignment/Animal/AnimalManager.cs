@@ -1,9 +1,8 @@
-﻿/* 
- * Magnus Wikhög
- * Assignment 3
- * 2019-02-27
- * 
- */
+﻿///<summary>
+/// Namn:       Magnus Wikhög
+/// Projekt:    _projekt_namn__
+/// Inlämnad:   _inlämnad_datum_
+///</summary>
 using System;
 using System.Collections.Generic;
 using Assignment.Animals;
@@ -11,9 +10,9 @@ using Assignment.ListManager;
 
 namespace Assignment.Animals{
 
-    /* 
-     * This class manages our animals. It lets us add animals and retrieve them.
-     */
+    /// <summary>
+    /// This class manages our animals. It lets us add animals and retrieve them.
+    /// </summary>
     public class AnimalManager : ListManager<Animal> {
 
         public void AddAnimal(Animal animal) {
@@ -24,9 +23,9 @@ namespace Assignment.Animals{
     }
 
 
-    /*
-     * Compares animal ages (ascending)
-     */
+    /// <summary>
+    /// Compares animal ages (ascending)
+    /// </summary>
     public class AgeComparer : IComparer<Animal> {
         public int Compare(Animal x, Animal y) {
             return x.age - y.age;
@@ -34,9 +33,9 @@ namespace Assignment.Animals{
     }
 
 
-    /*
-     * Compares animal names (ascending)
-     */
+    /// <summary>
+    /// Compares animal names (ascending)
+    /// </summary>
     public class NameComparer : IComparer<Animal> {
         public int Compare(Animal x, Animal y) {
             return x.Name.CompareTo(y.Name);
@@ -44,9 +43,9 @@ namespace Assignment.Animals{
     }
 
 
-    /*
-     * Compares animal ID's (ascending)
-     */
+    /// <summary>
+    /// Compares animal ID's (ascending)
+    /// </summary>
     public class IdComparer : IComparer<Animal> {
         public int Compare(Animal x, Animal y) {
             return x.ID.CompareTo(y.ID);
@@ -54,9 +53,9 @@ namespace Assignment.Animals{
     }
 
 
-    /*
-     * Compares animal genders (ascending)
-     */
+    /// <summary>
+    /// Compares animal genders (ascending)
+    /// </summary>
     public class GenderComparer : IComparer<Animal> {
         public int Compare(Animal x, Animal y) {
             return x.Gender.CompareTo(y.Gender);
@@ -64,20 +63,20 @@ namespace Assignment.Animals{
     }
 
 
-    /*
-     * Compares animal species (ascending)
-     */
+    /// <summary>
+    /// Compares animal species (ascending)
+    /// </summary>
     public class SpeciesComparer : IComparer<Animal> {
         public int Compare(Animal x, Animal y) {
             return x.GetSpecies().CompareTo(y.GetSpecies());
         }
     }
-    
 
 
-    /*
-     * Compares animal characteristics (ascending)
-     */
+
+    /// <summary>
+    /// Compares animal characteristics (ascending)
+    /// </summary>
     public class SpecialCharacteristicsComparer : IComparer<Animal> {
         public int Compare(Animal x, Animal y) {
             return x.GetSpecialCharacteristics().CompareTo(y.GetSpecialCharacteristics());

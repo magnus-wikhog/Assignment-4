@@ -1,9 +1,9 @@
-﻿/* 
- * Magnus Wikhög
- * Assignment 3
- * 2019-02-27
- * 
- */
+﻿///<summary>
+/// Namn:       Magnus Wikhög
+/// Projekt:    _projekt_namn__
+/// Inlämnad:   _inlämnad_datum_
+///</summary>
+using System;
 using System.Collections.Generic;
 
 namespace Assignment.Animals
@@ -12,6 +12,7 @@ namespace Assignment.Animals
     /// This is a class. It's called Swan. It is used to represent swans, which are a
     /// type of birds.
     /// </summary>
+    [Serializable]
     public class Swan : Bird{
         public string color;
 
@@ -45,10 +46,10 @@ namespace Assignment.Animals
 
 
 
-        /* 
-         * Returns a string representation of this species special characteristics, including any 
-         * characteristics in it's baseclass.
-         */
+        /// <summary>
+        /// Returns a string representation of this species special characteristics, including any  
+        /// characteristics in it's baseclass.
+        /// </summary>
         public override string GetSpecialCharacteristics() {
             return "It is a " + color + " swan. " + base.GetSpecialCharacteristics();
         }

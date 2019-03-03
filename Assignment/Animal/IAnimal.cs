@@ -1,9 +1,8 @@
-﻿/* 
- * Magnus Wikhög
- * Assignment 3
- * 2019-02-27
- * 
- */
+﻿///<summary>
+/// Namn:       Magnus Wikhög
+/// Projekt:    _projekt_namn__
+/// Inlämnad:   _inlämnad_datum_
+///</summary>
 using System;
 using System.Collections.Generic;
 using System.Linq;

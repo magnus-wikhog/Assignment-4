@@ -1,9 +1,9 @@
-﻿/* 
- * Magnus Wikhög
- * Assignment 3
- * 2019-02-27
- * 
- */
+﻿///<summary>
+/// Namn:       Magnus Wikhög
+/// Projekt:    _projekt_namn__
+/// Inlämnad:   _inlämnad_datum_
+///</summary>
+using Assignment.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +25,9 @@ namespace Assignment.ListManager {
         public ListManager() {
             m_list = new List<T>();
         }
+
+
+
 
 
         public int Count => m_list.Count;
@@ -106,5 +109,26 @@ namespace Assignment.ListManager {
             m_list.Sort(comparer);
         }
 
+
+        /// <summary>
+        /// Serializes the list to the given binary file.
+        /// </summary>
+        public void BinarySerialize(string filename) {
+            BinarySerializerUtility.Serialize(m_list, filename);
+        }
+
+        /// <summary>
+        /// Deserializes a list from the given binary file.
+        /// </summary>
+        public void BinaryDeSerialize(string filename) {
+            m_list = BinarySerializerUtility.Deserialize<List<T>>(filename);
+        }
+
+        /// <summary>
+        /// Serializes the list to the given XML file.
+        /// </summary>
+        public void XMLSerialize(string filename) {
+            throw new NotImplementedException();
+        }
     }
 }

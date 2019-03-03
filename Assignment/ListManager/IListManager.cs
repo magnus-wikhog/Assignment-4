@@ -1,9 +1,8 @@
-﻿/* 
- * Magnus Wikhög
- * Assignment 3
- * 2019-02-27
- * 
- */
+﻿///<summary>
+/// Namn:       Magnus Wikhög
+/// Projekt:    _projekt_namn__
+/// Inlämnad:   _inlämnad_datum_
+///</summary>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +14,23 @@ namespace Assignment.ListManager {
     /// <summary>Genereic interface for a class that manages a list of objects of type T.</summary>
     /// <typeparam name="T">The type of objects handled by the list manager.</typeparam>
     public interface IListManager<T> {
+
+        /// <summary>
+        /// Serializes the list manager to the given binary file.
+        /// </summary>
+        void BinarySerialize(string filename);
+
+        /// <summary>
+        /// Deserializes a list manager from the given binary file.
+        /// </summary>
+        void BinaryDeSerialize(string filename);
+
+        /// <summary>
+        /// Serializes the list manager to the given XML file.
+        /// </summary>
+        void XMLSerialize(string filename);
+
+
         /// <summary>
         /// Returns the number of items in the list.
         /// </summary>

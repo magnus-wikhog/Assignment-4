@@ -1,19 +1,28 @@
-﻿/* 
- * Magnus Wikhög
- * Assignment 3
- * 2019-02-27
- * 
- */
+﻿///<summary>
+/// Namn:       Magnus Wikhög
+/// Projekt:    _projekt_namn__
+/// Inlämnad:   _inlämnad_datum_
+///</summary>
 using Assignment.ListManager;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Assignment {
+
+    /// <summary>
+    /// A form that can be used to add either food or staff. Since both food and staff are very similar,
+    /// this form handles both of them in a similar manner.
+    /// </summary>
     public partial class StaffOrFoodForm : Form {
 
         public Result result;
 
+
+        /// <summary>
+        /// This class is used to store the result of the form/dialog. Since the result has more than one
+        /// variable, we need a class that can represent a complete result in a single object.
+        /// </summary>
         public class Result {
             public string name;
             public List<string> stringList = new List<string>();

@@ -1,9 +1,8 @@
-﻿/* 
- * Magnus Wikhög
- * Assignment 3
- * 2019-02-27
- * 
- */
+﻿///<summary>
+/// Namn:       Magnus Wikhög
+/// Projekt:    _projekt_namn__
+/// Inlämnad:   _inlämnad_datum_
+///</summary>
 using System;
 using System.Collections.Generic;
 
@@ -12,6 +11,7 @@ namespace Assignment.Animals
     /// <summary>
     /// A class. Specifically the Mammal class.
     /// </summary>
+    [Serializable]
     public abstract class Mammal : Animal {
 
         public int teethCount;
@@ -26,11 +26,10 @@ namespace Assignment.Animals
         }
 
 
-
-        /* 
-         * Returns a string representation of this category's special characteristics, including any 
-         * characteristics in it's baseclass.
-         */
+        /// <summary>
+        /// Returns a string representation of this category's special characteristics, including any  
+        /// characteristics in it's baseclass.
+        /// </summary>
         public override string GetSpecialCharacteristics() {
             return base.GetSpecialCharacteristics() + "It has " + teethCount + " teeth. ";
         }

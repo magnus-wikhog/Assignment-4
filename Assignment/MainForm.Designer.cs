@@ -59,6 +59,9 @@
             this.mammalTeethCountUpDown = new System.Windows.Forms.NumericUpDown();
             this.animalGenderListView = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.feedingScheduleTextBox = new System.Windows.Forms.TextBox();
+            this.eaterTypeTextBox = new System.Windows.Forms.TextBox();
             this.deleteAnimalButton = new System.Windows.Forms.Button();
             this.animalsListView = new System.Windows.Forms.ListView();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -75,9 +78,22 @@
             this.staffPage = new System.Windows.Forms.TabPage();
             this.staffListbox = new System.Windows.Forms.ListBox();
             this.addStaffButton = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.feedingScheduleTextBox = new System.Windows.Forms.TextBox();
-            this.eaterTypeTextBox = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileOpenText = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileOpenBinary = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileSaveAsText = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileSaveAsBinary = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuFileXML = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileXmlImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileXmlExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.animalAgeUpDown)).BeginInit();
             this.birdInput.SuspendLayout();
@@ -92,10 +108,11 @@
             this.mammalInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mammalTeethCountUpDown)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.foodPage.SuspendLayout();
             this.staffPage.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -117,7 +134,7 @@
             this.groupBox1.Controls.Add(this.dogInput);
             this.groupBox1.Controls.Add(this.mammalInput);
             this.groupBox1.Controls.Add(this.animalGenderListView);
-            this.groupBox1.Location = new System.Drawing.Point(12, 13);
+            this.groupBox1.Location = new System.Drawing.Point(12, 33);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
             this.groupBox1.Size = new System.Drawing.Size(613, 217);
@@ -432,19 +449,57 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.deleteAnimalButton);
             this.groupBox2.Controls.Add(this.animalsListView);
-            this.groupBox2.Location = new System.Drawing.Point(12, 265);
+            this.groupBox2.Location = new System.Drawing.Point(12, 285);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox2.Size = new System.Drawing.Size(907, 261);
+            this.groupBox2.Size = new System.Drawing.Size(906, 262);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Animals";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.feedingScheduleTextBox);
+            this.groupBox3.Controls.Add(this.eaterTypeTextBox);
+            this.groupBox3.Location = new System.Drawing.Point(609, 23);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(287, 198);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Feeding schedule";
+            // 
+            // feedingScheduleTextBox
+            // 
+            this.feedingScheduleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.feedingScheduleTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.feedingScheduleTextBox.Enabled = false;
+            this.feedingScheduleTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.feedingScheduleTextBox.Location = new System.Drawing.Point(6, 46);
+            this.feedingScheduleTextBox.Multiline = true;
+            this.feedingScheduleTextBox.Name = "feedingScheduleTextBox";
+            this.feedingScheduleTextBox.Size = new System.Drawing.Size(275, 145);
+            this.feedingScheduleTextBox.TabIndex = 1;
+            // 
+            // eaterTypeTextBox
+            // 
+            this.eaterTypeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.eaterTypeTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.eaterTypeTextBox.Enabled = false;
+            this.eaterTypeTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.eaterTypeTextBox.Location = new System.Drawing.Point(6, 20);
+            this.eaterTypeTextBox.Name = "eaterTypeTextBox";
+            this.eaterTypeTextBox.Size = new System.Drawing.Size(275, 20);
+            this.eaterTypeTextBox.TabIndex = 0;
             // 
             // deleteAnimalButton
             // 
@@ -473,7 +528,7 @@
             this.animalsListView.Location = new System.Drawing.Point(10, 23);
             this.animalsListView.MultiSelect = false;
             this.animalsListView.Name = "animalsListView";
-            this.animalsListView.Size = new System.Drawing.Size(593, 198);
+            this.animalsListView.Size = new System.Drawing.Size(592, 199);
             this.animalsListView.TabIndex = 0;
             this.animalsListView.UseCompatibleStateImageBehavior = false;
             this.animalsListView.View = System.Windows.Forms.View.Details;
@@ -512,7 +567,7 @@
             // addAnimalButton
             // 
             this.addAnimalButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.addAnimalButton.Location = new System.Drawing.Point(408, 238);
+            this.addAnimalButton.Location = new System.Drawing.Point(407, 258);
             this.addAnimalButton.Name = "addAnimalButton";
             this.addAnimalButton.Size = new System.Drawing.Size(114, 26);
             this.addAnimalButton.TabIndex = 4;
@@ -524,7 +579,7 @@
             // 
             this.tabControl1.Controls.Add(this.foodPage);
             this.tabControl1.Controls.Add(this.staffPage);
-            this.tabControl1.Location = new System.Drawing.Point(631, 14);
+            this.tabControl1.Location = new System.Drawing.Point(631, 34);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(287, 216);
@@ -590,55 +645,141 @@
             this.addStaffButton.UseVisualStyleBackColor = true;
             this.addStaffButton.Click += new System.EventHandler(this.addStaffButton_Click);
             // 
-            // groupBox3
+            // menuStrip1
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.feedingScheduleTextBox);
-            this.groupBox3.Controls.Add(this.eaterTypeTextBox);
-            this.groupBox3.Location = new System.Drawing.Point(609, 23);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(288, 198);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Feeding schedule";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFile});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(929, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // feedingScheduleTextBox
+            // mnuFile
             // 
-            this.feedingScheduleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.feedingScheduleTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.feedingScheduleTextBox.Enabled = false;
-            this.feedingScheduleTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.feedingScheduleTextBox.Location = new System.Drawing.Point(6, 46);
-            this.feedingScheduleTextBox.Multiline = true;
-            this.feedingScheduleTextBox.Name = "feedingScheduleTextBox";
-            this.feedingScheduleTextBox.Size = new System.Drawing.Size(276, 145);
-            this.feedingScheduleTextBox.TabIndex = 1;
+            this.mnuFile.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFileNew,
+            this.mnuFileOpen,
+            this.mnuFileSave,
+            this.mnuFileSaveAs,
+            this.toolStripSeparator1,
+            this.mnuFileXML,
+            this.toolStripSeparator2,
+            this.mnuFileExit});
+            this.mnuFile.Name = "mnuFile";
+            this.mnuFile.Size = new System.Drawing.Size(37, 20);
+            this.mnuFile.Text = "File";
             // 
-            // eaterTypeTextBox
+            // mnuFileNew
             // 
-            this.eaterTypeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.eaterTypeTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.eaterTypeTextBox.Enabled = false;
-            this.eaterTypeTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.eaterTypeTextBox.Location = new System.Drawing.Point(6, 20);
-            this.eaterTypeTextBox.Name = "eaterTypeTextBox";
-            this.eaterTypeTextBox.Size = new System.Drawing.Size(276, 20);
-            this.eaterTypeTextBox.TabIndex = 0;
+            this.mnuFileNew.Name = "mnuFileNew";
+            this.mnuFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.mnuFileNew.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileNew.Text = "New";
+            this.mnuFileNew.Click += new System.EventHandler(this.mnuFileNew_Click);
+            // 
+            // mnuFileOpen
+            // 
+            this.mnuFileOpen.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFileOpenText,
+            this.mnuFileOpenBinary});
+            this.mnuFileOpen.Name = "mnuFileOpen";
+            this.mnuFileOpen.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileOpen.Text = "Open...";
+            // 
+            // mnuFileOpenText
+            // 
+            this.mnuFileOpenText.Name = "mnuFileOpenText";
+            this.mnuFileOpenText.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileOpenText.Text = "Text File";
+            // 
+            // mnuFileOpenBinary
+            // 
+            this.mnuFileOpenBinary.Name = "mnuFileOpenBinary";
+            this.mnuFileOpenBinary.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileOpenBinary.Text = "Binary File";
+            this.mnuFileOpenBinary.Click += new System.EventHandler(this.mnuFileOpenBinary_Click);
+            // 
+            // mnuFileSave
+            // 
+            this.mnuFileSave.Name = "mnuFileSave";
+            this.mnuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.mnuFileSave.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileSave.Text = "Save";
+            // 
+            // mnuFileSaveAs
+            // 
+            this.mnuFileSaveAs.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFileSaveAsText,
+            this.mnuFileSaveAsBinary});
+            this.mnuFileSaveAs.Name = "mnuFileSaveAs";
+            this.mnuFileSaveAs.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileSaveAs.Text = "Save as....";
+            // 
+            // mnuFileSaveAsText
+            // 
+            this.mnuFileSaveAsText.Name = "mnuFileSaveAsText";
+            this.mnuFileSaveAsText.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileSaveAsText.Text = "Text File";
+            // 
+            // mnuFileSaveAsBinary
+            // 
+            this.mnuFileSaveAsBinary.Name = "mnuFileSaveAsBinary";
+            this.mnuFileSaveAsBinary.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileSaveAsBinary.Text = "Binary File";
+            this.mnuFileSaveAsBinary.Click += new System.EventHandler(this.mnuFileSaveAsBinary_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // mnuFileXML
+            // 
+            this.mnuFileXML.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFileXmlImport,
+            this.mnuFileXmlExport});
+            this.mnuFileXML.Name = "mnuFileXML";
+            this.mnuFileXML.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileXML.Text = "XML";
+            // 
+            // mnuFileXmlImport
+            // 
+            this.mnuFileXmlImport.Name = "mnuFileXmlImport";
+            this.mnuFileXmlImport.Size = new System.Drawing.Size(185, 22);
+            this.mnuFileXmlImport.Text = "Import from XML file";
+            // 
+            // mnuFileXmlExport
+            // 
+            this.mnuFileXmlExport.Name = "mnuFileXmlExport";
+            this.mnuFileXmlExport.Size = new System.Drawing.Size(185, 22);
+            this.mnuFileXmlExport.Text = "Export to XML file";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // mnuFileExit
+            // 
+            this.mnuFileExit.Name = "mnuFileExit";
+            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
+            this.mnuFileExit.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileExit.Text = "Exit";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(930, 533);
+            this.ClientSize = new System.Drawing.Size(929, 559);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.addAnimalButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -664,12 +805,15 @@
             this.mammalInput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mammalTeethCountUpDown)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.foodPage.ResumeLayout(false);
             this.staffPage.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -725,6 +869,22 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox feedingScheduleTextBox;
         private System.Windows.Forms.TextBox eaterTypeTextBox;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuFile;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileNew;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileOpen;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileSave;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileSaveAs;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileXML;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileExit;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileOpenText;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileOpenBinary;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileSaveAsText;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileSaveAsBinary;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileXmlImport;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileXmlExport;
     }
 }
 

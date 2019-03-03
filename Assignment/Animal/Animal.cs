@@ -1,25 +1,31 @@
-﻿/* 
- * Magnus Wikhög
- * Assignment 3
- * 2019-02-27
- * 
- */
+﻿using System;
+///<summary>
+/// Namn:       Magnus Wikhög
+/// Projekt:    _projekt_namn__
+/// Inlämnad:   _inlämnad_datum_
+///</summary>
 namespace Assignment.Animals
 {
 
-    /*
-     * This is the abstract base class for all animal species, and contains common
-     * properties for all species.
-     */
+    /// <summary>
+    /// This is the abstract base class for all animal species, and contains common
+    /// properties for all species.
+    /// </summary>
+    [Serializable]
     public abstract class Animal : IAnimal{
 
-        // Abstract interface methods that need to be implemented by subclasses
+
+        /// <summary>
+        /// Abstract interface methods that need to be implemented by subclasses
+        /// </summary>
         public abstract EaterType GetEaterType();
         public abstract FoodSchedule GetFoodSchedule();
         public abstract string GetSpecies();
 
 
-        // Public properties common to all animals
+        /// <summary>
+        ///  Public properties common to all animals
+        /// </summary>
         public string ID { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
         public string Gender { get => gender; set => gender = value; }
@@ -38,10 +44,11 @@ namespace Assignment.Animals
 
 
 
-        /*
-         * This method will be overriden by subclasses and used to get a string representation
-         * of the special characteristics for an animal category and an animal species.
-         */
+         /// <summary>
+         /// This method will be overriden by subclasses and used to get a string representation
+         /// of the special characteristics for an animal category and an animal species.
+         /// </summary>
+         /// <returns></returns>
         public virtual string GetSpecialCharacteristics() {
             return "";
         }

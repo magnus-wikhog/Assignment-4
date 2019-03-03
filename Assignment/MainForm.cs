@@ -1,12 +1,12 @@
-﻿/* 
- * Magnus Wikhög
- * Assignment 3
- * 2019-02-27
- * 
- */
+﻿///<summary>
+/// Namn:       Magnus Wikhög
+/// Projekt:    _projekt_namn__
+/// Inlämnad:   _inlämnad_datum_
+///</summary>
 using Assignment.Animals;
 using Assignment.Recipe;
 using Assignment.Staff;
+using Assignment.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -16,7 +16,9 @@ namespace Assignment
 
 
 
-
+    /// <summary>
+    /// The main form for this application.
+    /// </summary>
     public partial class MainForm : Form{
         private AnimalManager mAnimalManager;
         private RecipeManager mRecipeManager;
@@ -24,16 +26,12 @@ namespace Assignment
         private Dictionary<string, CategoryConfiguration> mCategoriesConfigurations;
         private Dictionary<string, SpeciesConfiguration> mSpeciesConfigurations;
 
-
+        /// <summary>
+        /// This constructor creates and initilaizes the necessary data structures for the main form
+        /// of the application.
+        /// </summary>
         public MainForm(){
             InitializeComponent();
-
-            // Initialize list managers
-            mAnimalManager = new AnimalManager();
-            mRecipeManager = new RecipeManager();
-            mStaffManager = new StaffManager();
-
-
 
             // Configrure categories
             mCategoriesConfigurations = new Dictionary<string, CategoryConfiguration> {
@@ -41,7 +39,7 @@ namespace Assignment
                 { "Bird",   new CategoryConfiguration("Bird",   birdInput) }
             };
 
-            // COnfigure species
+            // Configure species
             mSpeciesConfigurations = new Dictionary<string, SpeciesConfiguration> {
                 { "Cat",   new SpeciesConfiguration("Cat",  catInput, mCategoriesConfigurations["Mammal"] ) },
                 { "Dog",   new SpeciesConfiguration("Dog",  dogInput, mCategoriesConfigurations["Mammal"] ) },
@@ -54,14 +52,29 @@ namespace Assignment
             }
             categoryListbox.SelectedIndex = 0;
             animalGenderListView.SelectedIndex = 0;
+
+            Initialize();
         }
 
 
+        /// <summary>
+        /// Initializes / resets the applications data structures and updates the UI accordingly.
+        /// </summary>
+        void Initialize() {
+            // Initialize list managers
+            mAnimalManager = new AnimalManager();
+            mRecipeManager = new RecipeManager();
+            mStaffManager = new StaffManager();
+
+            DisplayAnimals();
+            DisplayRecipes();
+            DisplayStaff();
+        }
 
 
-        /*
-         * Updates the UI in response to a selected category
-         */
+        /// <summary>
+        /// Updates the UI in response to a selected category
+        /// </summary>
         void OnCategorySelected(string category) {
             speciesListbox.Items.Clear();
 
@@ -77,16 +90,16 @@ namespace Assignment
 
 
 
-        /*
-         * Event handler for the category list
-         */
+        /// <summary>
+        /// Event handler for the category list
+        /// </summary>
         private void categoryListbox_SelectedIndexChanged(object sender, EventArgs e) {
             OnCategorySelected(categoryListbox.SelectedItem.ToString());
         }
 
-        /*
-         * Updates the UI when the user checks/unchecks "Show all species"
-         */
+        /// <summary>
+        /// Updates the UI when the user checks/unchecks "Show all species"
+        /// </summary>
         private void showAllCategoriesCheckbox_CheckedChanged(object sender, EventArgs e) {
             categoryListbox.Enabled = !showAllCategoriesCheckbox.Checked;
 
@@ -94,9 +107,9 @@ namespace Assignment
             OnCategorySelected(showAllCategoriesCheckbox.Checked ? null : categoryListbox.Text);
         }
 
-        /*
-         * Updates the UI when the user selects a species
-         */
+        /// <summary>
+        /// Updates the UI when the user selects a species
+        /// </summary>
         private void speciesListbox_SelectedIndexChanged(object sender, EventArgs e) {
             // Activate correct panel for the selected species
             // Category panel must also be actived from here, because we could be showing animals from
@@ -108,9 +121,9 @@ namespace Assignment
 
 
 
-        /*
-         * Adds an animal with the current specification to the list.
-         */
+        /// <summary>
+        /// Adds an animal with the current specification to the list.
+        /// </summary>
         private void addAnimalButton_Click(object sender, EventArgs e) {
             // Determine which type of animal to create, and use the correct UI elements to set it's properties
             Animal animal = AnimalFactory.CreateAnimal(
@@ -137,9 +150,9 @@ namespace Assignment
         }
 
 
-        /*
-         * Reloads all animals from the AnimalManager and displays them in the list.
-         */
+        /// <summary>
+        /// Reloads all animals from the AnimalManager and displays them in the list.
+        /// </summary>
         private void DisplayAnimals() {
             animalsListView.Items.Clear();
             for (int i = 0; i < mAnimalManager.Count; i++) {
@@ -149,9 +162,9 @@ namespace Assignment
         }
 
 
-        /*
-         * Updates the eating type and feeding schedule when the user selects an animal in the list.
-         */
+        /// <summary>
+        /// Updates the eating type and feeding schedule when the user selects an animal in the list.
+        /// </summary>
         private void animalsListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
             Animal animal = mAnimalManager.GetAt(e.Item.Index);
             if( null != animal) {
@@ -161,9 +174,9 @@ namespace Assignment
         }
 
 
-        /*
-         * Sorts the animals using different algorithems based on which column is clicked.
-         */
+        /// <summary>
+        /// Sorts the animals using different algorithems based on which column is clicked.
+        /// </summary>
         private void animalsListView_ColumnClick(object sender, ColumnClickEventArgs e) {
             IComparer<Animal> comparer = null;
 
@@ -192,9 +205,9 @@ namespace Assignment
         }
 
 
-        /*
-         * Delete an animal when the Delete button is clicked
-         */
+        /// <summary>
+        /// Delete an animal when the Delete button is clicked
+        /// </summary>
         private void deleteAnimalButton_Click(object sender, EventArgs e) {
             if (animalsListView.SelectedIndices.Count == 1) {
                 mAnimalManager.DeleteAt(animalsListView.SelectedIndices[0]);
@@ -205,9 +218,9 @@ namespace Assignment
         }
 
 
-        /*
-         * Brings up the RecipeForm where the user can create a new recipe which will be added to the RecipeManager.
-         */
+        /// <summary>
+        /// Brings up the RecipeForm where the user can create a new recipe which will be added to the RecipeManager.
+        /// </summary>
         private void addFoodButton_Click(object sender, EventArgs e) {
             StaffOrFoodForm form = new StaffOrFoodForm("Add recipe", "Ingredients", "Ingredient");
             if (form.ShowDialog() == DialogResult.OK) {
@@ -231,9 +244,9 @@ namespace Assignment
 
 
 
-        /*
-         * Brings up the StaffForm where the user can register staffs qualifications.
-         */
+        /// <summary>
+        /// Brings up the StaffForm where the user can register staffs qualifications.
+        /// </summary>
         private void addStaffButton_Click(object sender, EventArgs e) {
             StaffOrFoodForm form = new StaffOrFoodForm("Add staff", "qualifications", "Qualification");
             if (form.ShowDialog() == DialogResult.OK) {
@@ -245,15 +258,53 @@ namespace Assignment
             }
         }
 
-        /*
-          * Reloads all staff from the StaffManager and displays them in the list.
-          */
+        /// <summary>
+        /// Reloads all staff from the StaffManager and displays them in the list.
+        /// </summary>
         private void DisplayStaff() {
             staffListbox.Items.Clear();
             staffListbox.Items.AddRange(mStaffManager.ToStringArray());
         }
 
 
+        /// <summary>
+        /// The user selected File -> New, so we reset the application.
+        /// </summary>
+        private void mnuFileNew_Click(object sender, EventArgs e) {
+            Initialize();
+        }
+
+        private void binaryFileToolStripMenuItem2_Click(object sender, EventArgs e) {
+        }
+
+        /// <summary>
+        /// The user selected File -> Save as -> Binary, so we display a save dialog and save the file.
+        /// </summary>
+        private void mnuFileSaveAsBinary_Click(object sender, EventArgs e) {
+            SaveFileDialog saveDlg = new SaveFileDialog();
+            saveDlg.Filter = "Binary file|*.bin";
+            saveDlg.Title = "Save as binary file";
+            saveDlg.ShowDialog();
+
+            if (saveDlg.FileName != "") {
+                mAnimalManager.BinarySerialize(saveDlg.FileName);
+            }
+        }
+
+        /// <summary>
+        /// The user selected File -> Open -> Binary, so we display an open dialog and open the file.
+        /// </summary>
+        private void mnuFileOpenBinary_Click(object sender, EventArgs e) {
+            OpenFileDialog openDlg = new OpenFileDialog();
+            openDlg.Filter = "Binary file|*.bin";
+            openDlg.Title = "Open binary file";
+            openDlg.ShowDialog();
+
+            if (openDlg.FileName != "") {
+                mAnimalManager.BinaryDeSerialize(openDlg.FileName);
+                DisplayAnimals();
+            }
+        }
     }
 
 
@@ -261,10 +312,9 @@ namespace Assignment
 
 
 
-    /* 
-     * Class that represents a configuration for a category (for example which 
-     * input panel to display).
-     */
+    /// <summary>
+    /// Class that represents a configuration for a category (for example which input panel to display).
+    /// </summary>
     class CategoryConfiguration {
         public string name;
         public Panel inputPanel;
@@ -276,10 +326,9 @@ namespace Assignment
     }
 
 
-    /* 
-     * Class that represents a configuration for a species (for example which 
-     * input panel to display).
-     */
+    /// <summary>
+    /// Class that represents a configuration for a species (for example which input panel to display).
+    /// </summary>
     class SpeciesConfiguration {
         public string name;
         public Panel inputPanel;

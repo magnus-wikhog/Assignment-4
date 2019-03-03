@@ -1,9 +1,9 @@
-﻿/* 
- * Magnus Wikhög
- * Assignment 3
- * 2019-02-27
- * 
- */
+﻿///<summary>
+/// Namn:       Magnus Wikhög
+/// Projekt:    _projekt_namn__
+/// Inlämnad:   _inlämnad_datum_
+///</summary>
+using System;
 using System.Collections.Generic;
 
 namespace Assignment.Animals
@@ -11,6 +11,7 @@ namespace Assignment.Animals
     /// <summary>
     /// This class is called Cat. It represents a cat...
     /// </summary>
+    [Serializable]
     public class Cat : Mammal {
         public double clawLengthCm;
 
@@ -44,10 +45,10 @@ namespace Assignment.Animals
         public override string GetSpecies() => "Cat";
 
 
-        /* 
-         * Returns a string representation of this species special characteristics, including any 
-         * characteristics in it's baseclass.
-         */
+        /// <summary>
+        /// Returns a string representation of this species special characteristics, including any  
+        /// characteristics in it's baseclass.
+        /// </summary>
         public override string GetSpecialCharacteristics() {
             return "It's claws are " + clawLengthCm + " cm long. " + base.GetSpecialCharacteristics();
         }
