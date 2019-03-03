@@ -691,13 +691,13 @@
             // mnuFileOpenText
             // 
             this.mnuFileOpenText.Name = "mnuFileOpenText";
-            this.mnuFileOpenText.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileOpenText.Size = new System.Drawing.Size(128, 22);
             this.mnuFileOpenText.Text = "Text File";
             // 
             // mnuFileOpenBinary
             // 
             this.mnuFileOpenBinary.Name = "mnuFileOpenBinary";
-            this.mnuFileOpenBinary.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileOpenBinary.Size = new System.Drawing.Size(128, 22);
             this.mnuFileOpenBinary.Text = "Binary File";
             this.mnuFileOpenBinary.Click += new System.EventHandler(this.mnuFileOpenBinary_Click);
             // 
@@ -720,13 +720,13 @@
             // mnuFileSaveAsText
             // 
             this.mnuFileSaveAsText.Name = "mnuFileSaveAsText";
-            this.mnuFileSaveAsText.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileSaveAsText.Size = new System.Drawing.Size(128, 22);
             this.mnuFileSaveAsText.Text = "Text File";
             // 
             // mnuFileSaveAsBinary
             // 
             this.mnuFileSaveAsBinary.Name = "mnuFileSaveAsBinary";
-            this.mnuFileSaveAsBinary.Size = new System.Drawing.Size(180, 22);
+            this.mnuFileSaveAsBinary.Size = new System.Drawing.Size(128, 22);
             this.mnuFileSaveAsBinary.Text = "Binary File";
             this.mnuFileSaveAsBinary.Click += new System.EventHandler(this.mnuFileSaveAsBinary_Click);
             // 
@@ -747,14 +747,16 @@
             // mnuFileXmlImport
             // 
             this.mnuFileXmlImport.Name = "mnuFileXmlImport";
-            this.mnuFileXmlImport.Size = new System.Drawing.Size(185, 22);
-            this.mnuFileXmlImport.Text = "Import from XML file";
+            this.mnuFileXmlImport.Size = new System.Drawing.Size(194, 22);
+            this.mnuFileXmlImport.Text = "Import from XML file...";
+            this.mnuFileXmlImport.Click += new System.EventHandler(this.mnuFileXmlImport_Click);
             // 
             // mnuFileXmlExport
             // 
             this.mnuFileXmlExport.Name = "mnuFileXmlExport";
-            this.mnuFileXmlExport.Size = new System.Drawing.Size(185, 22);
-            this.mnuFileXmlExport.Text = "Export to XML file";
+            this.mnuFileXmlExport.Size = new System.Drawing.Size(194, 22);
+            this.mnuFileXmlExport.Text = "Export to XML file...";
+            this.mnuFileXmlExport.Click += new System.EventHandler(this.mnuFileXmlExport_Click);
             // 
             // toolStripSeparator2
             // 
@@ -767,6 +769,7 @@
             this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
             this.mnuFileExit.Size = new System.Drawing.Size(180, 22);
             this.mnuFileExit.Text = "Exit";
+            this.mnuFileExit.Click += new System.EventHandler(this.mnuFileExit_Click);
             // 
             // MainForm
             // 

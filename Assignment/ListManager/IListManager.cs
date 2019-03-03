@@ -30,6 +30,11 @@ namespace Assignment.ListManager {
         /// </summary>
         void XMLSerialize(string filename);
 
+        /// <summary>
+        /// Deserializes a list manager from the given XML file.
+        /// </summary>
+        void XMLDeSerialize(string filename);
+
 
         /// <summary>
         /// Returns the number of items in the list.

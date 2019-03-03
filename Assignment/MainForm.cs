@@ -287,7 +287,12 @@ namespace Assignment
             saveDlg.ShowDialog();
 
             if (saveDlg.FileName != "") {
-                mAnimalManager.BinarySerialize(saveDlg.FileName);
+                try {
+                    mAnimalManager.BinarySerialize(saveDlg.FileName);
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.ToString(), "Error when saving file");
+                }           
             }
         }
 
@@ -301,10 +306,59 @@ namespace Assignment
             openDlg.ShowDialog();
 
             if (openDlg.FileName != "") {
-                mAnimalManager.BinaryDeSerialize(openDlg.FileName);
-                DisplayAnimals();
+                try {
+                    mAnimalManager.BinaryDeSerialize(openDlg.FileName);
+                    DisplayAnimals();
+                }
+                catch( Exception ex) {
+                    MessageBox.Show(ex.ToString(), "Error when opening file");
+                }
             }
         }
+
+        /// <summary>
+        /// The user selected File -> XML -> Export, so we display a save dialog and save the file.
+        /// </summary>
+        private void mnuFileXmlExport_Click(object sender, EventArgs e) {
+            SaveFileDialog saveDlg = new SaveFileDialog();
+            saveDlg.Filter = "XML file|*.xml";
+            saveDlg.Title = "Export as xml file";
+            saveDlg.ShowDialog();
+
+            if (saveDlg.FileName != "") {
+                mRecipeManager.XMLSerialize(saveDlg.FileName);
+            }
+        }
+
+
+
+        /// <summary>
+        /// The user selected File -> XML -> Import, so we display an open dialog and open the file.
+        /// </summary>
+        private void mnuFileXmlImport_Click(object sender, EventArgs e) {
+            OpenFileDialog openDlg = new OpenFileDialog();
+            openDlg.Filter = "XML file|*.xml";
+            openDlg.Title = "Import XML file";
+            openDlg.ShowDialog();
+
+            if (openDlg.FileName != "") {
+                try {
+                    mRecipeManager.XMLDeSerialize(openDlg.FileName);
+                    DisplayRecipes();
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.ToString(), "Error when importing from file");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The user selected File -> exit, so we exit the application.
+        /// </summary>
+        private void mnuFileExit_Click(object sender, EventArgs e) {
+            Close();
+        }
+
     }
 
 

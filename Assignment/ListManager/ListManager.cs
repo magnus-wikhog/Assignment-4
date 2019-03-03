@@ -128,7 +128,15 @@ namespace Assignment.ListManager {
         /// Serializes the list to the given XML file.
         /// </summary>
         public void XMLSerialize(string filename) {
-            throw new NotImplementedException();
+            XMLSerializerUtility.Serialize<List<T>>(filename, m_list);
         }
+
+        /// <summary>
+        /// Deserializes a list from the given XML file.
+        /// </summary>
+        public void XMLDeSerialize(string filename) {
+            m_list = XMLSerializerUtility.Deserialize<List<T>>(filename);
+        }
+
     }
 }

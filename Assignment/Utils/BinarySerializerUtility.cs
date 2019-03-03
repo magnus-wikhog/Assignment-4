@@ -16,25 +16,23 @@ namespace Assignment.Utils {
         /// <summary>
         /// Serializes any serializable object to the specified file.
         /// </summary>
-        public static bool Serialize(object obj, string filePath) {
-            bool bOK = true;
+        public static void Serialize(object obj, string filePath) {
             FileStream fileObj = null;
+
             try {
                 fileObj = new FileStream(filePath, FileMode.Create);
                 BinaryFormatter binFormatter = new BinaryFormatter();
                 binFormatter.Serialize(fileObj, obj);
-                fileObj.Flush();
+                fileObj.Flush(); // Make sure we wrote everything to file before closing it
             }
-            catch // Silently catch all exceptions...
-            {
-                bOK = false;
+            catch { 
+                throw;  // Run finally{} and then rethrow the exception
             }
             finally {
                 if (fileObj != null)
                     fileObj.Close();
 
             }
-            return bOK;
         }
 
         /// <summary>
@@ -42,7 +40,7 @@ namespace Assignment.Utils {
         /// </summary>
         public static T Deserialize<T>(string filepath) {
             FileStream fileObj = null;
-            object obj = null;
+            object result = null;
 
             try {
                 if (!File.Exists(filepath)) {
@@ -52,10 +50,10 @@ namespace Assignment.Utils {
                 fileObj = new FileStream(filepath, FileMode.Open);
                 fileObj.Position = 0;
                 BinaryFormatter binFormatter = new BinaryFormatter();
-                obj = binFormatter.Deserialize(fileObj);
+                result = binFormatter.Deserialize(fileObj);
             }
-            catch (FileNotFoundException ex) {
-                MessageBox.Show(ex.FileName + " - " + ex.Message);
+            catch{
+                throw;  // Run finally{} and then rethrow the exception
             }
             finally {
                 if (fileObj != null) {
@@ -63,7 +61,7 @@ namespace Assignment.Utils {
                 }
             }
 
-            return (T)obj;
+            return (T)result;
         }
 
     }

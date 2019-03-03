@@ -15,19 +15,20 @@ namespace Assignment.Recipe {
     /// <summary>
     /// A class representing a Recipe.
     /// </summary>
+    [Serializable]
     public class Recipe {
-        ListManager<string> mIngredients;
+        List<string> mIngredients;
 
         public string Name;
-        public ListManager<string> Ingredients { get => mIngredients; }
+        public List<string> Ingredients { get => mIngredients; }
+
 
         /// <summary>
         /// A constructor for creating a Recipe instance.
         /// </summary>
         public Recipe() {
-            mIngredients = new ListManager<string>();
+            mIngredients = new List<string>();
         }
-
 
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace Assignment.Recipe {
         /// </summary>
         override
         public string ToString() {
-            return Name + ", " + Ingredients.ToStringList().Aggregate( (a, b) => a+", "+b );
+            return Name + ", " + Ingredients.Aggregate( (a, b) => a.ToString()+", "+b.ToString() );
         }
     }
 }
